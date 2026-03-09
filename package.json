@@ -1,0 +1,25 @@
+{
+  "name": "tyt-takip",
+  "version": "1.0.0",
+  "description": "TYT sınav sonuçlarını takip etmek için modern web uygulaması",
+  "main": "index.html",
+  "keywords": [
+    "tyt",
+    "sınav",
+    "tracker",
+    "education",
+    "study",
+    "türkiye",
+    "takip"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kullanıcıadı/tyt-takip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kullanıcıadı/tyt-takip/issues"
+  },
+  "homepage": "https://github.com/kullanıcıadı/tyt-takip#readme"
+}
