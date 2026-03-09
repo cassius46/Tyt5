@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -11,44 +10,20 @@
 html,body{height:100%;overflow-x:hidden}
 body{background:#070910;color:#cdd9e5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
 
-/* TOP NAV - scrollable row */
-.topbar{
-position:sticky;top:0;z-index:999;
-background:#070910;
-border-bottom:1px solid #1e2d3d;
-padding:10px 12px 8px;
-}
+.topbar{position:sticky;top:0;z-index:999;background:#070910;border-bottom:1px solid #1e2d3d;padding:10px 12px 8px}
 .logo{font-weight:900;font-size:1rem;color:#3ddc97;letter-spacing:.1em;margin-bottom:8px;display:block}
-.tabs{
-display:flex;gap:6px;
-overflow-x:scroll;
--webkit-overflow-scrolling:touch;
-scrollbar-width:none;
-padding-bottom:2px;
-}
+.tabs{display:flex;gap:6px;overflow-x:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .tabs::-webkit-scrollbar{display:none}
-.tab{
-flex:0 0 auto;
-padding:7px 14px;border-radius:8px;
-font-size:.76rem;font-weight:700;
-border:1px solid #1e2d3d;
-background:#111820;color:#5a7a8a;
-cursor:pointer;white-space:nowrap;
--webkit-user-select:none;user-select:none;
-}
+.tab{flex:0 0 auto;padding:7px 14px;border-radius:8px;font-size:.76rem;font-weight:700;border:1px solid #1e2d3d;background:#111820;color:#5a7a8a;cursor:pointer;white-space:nowrap;-webkit-user-select:none;user-select:none}
 .tab.on{background:#3ddc97;color:#070910;border-color:#3ddc97}
 
-/* PAGES */
 .page{display:none;padding:14px 12px 90px;max-width:960px;margin:0 auto}
 .page.on{display:block}
 
-/* CARDS */
 .card{background:#111820;border:1px solid #1e2d3d;border-radius:14px;padding:16px;margin-bottom:12px}
 .stitle{font-size:.62rem;letter-spacing:.12em;color:#5a7a8a;text-transform:uppercase;font-weight:700;margin-bottom:12px}
 
-/* SUBJECT MINI CARDS - 2 per row */
 .g4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-
 .scard{background:#111820;border:1px solid #1e2d3d;border-radius:12px;padding:14px;border-top:3px solid var(--c)}
 .scard-lbl{font-size:.6rem;letter-spacing:.1em;color:#5a7a8a;text-transform:uppercase;margin-bottom:6px}
 .scard-net{font-size:2rem;font-weight:900;color:var(--c);line-height:1;margin-bottom:3px}
@@ -58,7 +33,6 @@ cursor:pointer;white-space:nowrap;
 .t-dn{background:rgba(255,92,106,.12);color:#ff5c6a}
 .t-eq{background:rgba(90,122,138,.12);color:#5a7a8a}
 
-/* TOTAL */
 .total-box{background:linear-gradient(135deg,#0d1117,#161f2b);border:1px solid #253545;border-radius:14px;padding:18px;margin-bottom:12px}
 .total-lbl{font-size:.6rem;letter-spacing:.12em;color:#5a7a8a;text-transform:uppercase;margin-bottom:6px}
 .total-num{font-size:2.8rem;font-weight:900;color:#3ddc97;line-height:1;margin-bottom:10px}
@@ -67,26 +41,18 @@ cursor:pointer;white-space:nowrap;
 .prog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#3ddc97,#58b4ff);transition:width .8s ease}
 .total-sub{font-size:.7rem;color:#5a7a8a}
 
-/* CHART */
 .ch{position:relative}
 .h160{height:160px}.h200{height:200px}.h220{height:220px}
 
-/* FORM */
 .fcard{background:#111820;border:1px solid #1e2d3d;border-radius:14px;padding:16px;margin-bottom:12px}
 .flbl{font-size:.6rem;letter-spacing:.1em;color:#3ddc97;text-transform:uppercase;font-weight:700;margin-bottom:12px}
 
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
 label{font-size:.66rem;letter-spacing:.06em;color:#5a7a8a;text-transform:uppercase;font-weight:600}
 
-input,select,textarea{
-background:#070910;border:1px solid #1e2d3d;border-radius:8px;
-color:#cdd9e5;padding:10px 12px;
-font-family:inherit;font-size:.88rem;outline:none;width:100%;
--webkit-appearance:none;transition:border-color .15s;
-}
+input,select,textarea{background:#070910;border:1px solid #1e2d3d;border-radius:8px;color:#cdd9e5;padding:10px 12px;font-family:inherit;font-size:.88rem;outline:none;width:100%;-webkit-appearance:none;transition:border-color .15s}
 input:focus,select:focus,textarea:focus{border-color:#3ddc97}
-input[type=date]::-webkit-calendar-picker-indicator,
-input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.4)}
+input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.4)}
 
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
@@ -103,7 +69,6 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.4)}
 .btn-d{background:rgba(255,92,106,.1);color:#ff5c6a;border:1px solid rgba(255,92,106,.2);padding:5px 10px;font-size:.7rem;border-radius:6px;cursor:pointer;font-family:inherit}
 .brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
-/* TOPICS */
 .titem{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:9px;background:#0d1117;border:1px solid #1e2d3d;margin-bottom:6px;cursor:pointer;-webkit-user-select:none;user-select:none}
 .titem.done{opacity:.4}
 .titem.done .tname{text-decoration:line-through}
@@ -113,7 +78,6 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.4)}
 .addrow input{flex:1}
 .addbtn{flex-shrink:0;background:#161f2b;border:1px solid #1e2d3d;border-radius:8px;color:#5a7a8a;padding:10px 14px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit}
 
-/* GOALS */
 .gitem{background:#111820;border:1px solid #1e2d3d;border-radius:12px;padding:14px;margin-bottom:10px;border-left:3px solid var(--c)}
 .ghead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .gsubj{font-size:.68rem;letter-spacing:.1em;color:var(--c);text-transform:uppercase;font-weight:700}
@@ -123,14 +87,12 @@ input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.4)}
 .gbarfill{height:100%;border-radius:4px;transition:width .6s ease}
 .gstatus{font-size:.68rem;color:#5a7a8a;margin-top:5px}
 
-/* STUDY */
 .sg4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .stcard{background:#111820;border:1px solid #1e2d3d;border-radius:12px;padding:14px;border-left:3px solid var(--c);text-align:center}
 .stsubj{font-size:.6rem;letter-spacing:.1em;color:#5a7a8a;text-transform:uppercase;margin-bottom:6px}
 .sttotal{font-size:1.5rem;font-weight:900;color:var(--c);line-height:1}
 .stunit{font-size:.66rem;color:#5a7a8a;margin-top:2px}
 
-/* TABLE */
 .twrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:.78rem}
 th{text-align:left;color:#5a7a8a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:0 6px 10px;font-weight:700;border-bottom:1px solid #1e2d3d}
@@ -140,13 +102,11 @@ tr:last-child td{border-bottom:none}
 
 .empty{text-align:center;padding:30px 20px;color:#5a7a8a;font-size:.84rem}
 
-/* TOAST */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);background:#111820;border:1px solid #3ddc97;border-radius:10px;padding:10px 20px;font-size:.82rem;color:#3ddc97;font-weight:700;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .cp{position:fixed;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:9998;animation:cf 1.4s ease-in forwards}
 @keyframes cf{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 </style>
-
 </head>
 <body>
 
@@ -163,7 +123,6 @@ tr:last-child td{border-bottom:none}
 </div>
 
 <!-- DASHBOARD -->
-
 <div class="page on" id="p-dash">
   <div class="total-box">
     <div class="total-lbl">Son Deneme Toplam Net</div>
@@ -188,7 +147,6 @@ tr:last-child td{border-bottom:none}
 </div>
 
 <!-- GİRİŞ -->
-
 <div class="page" id="p-giris">
   <div class="fcard">
     <div class="flbl">Deneme Bilgileri</div>
@@ -208,19 +166,17 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
   <div class="brow">
-    <button class="btn btn-p" onclick="saveEntry()">💾 Kaydet</button>
-    <button class="btn btn-g" onclick="clearForm()">Temizle</button>
+    <button class="btn btn-p" id="btn-save">💾 Kaydet</button>
+    <button class="btn btn-g" id="btn-clear">Temizle</button>
   </div>
 </div>
 
 <!-- KONULAR -->
-
 <div class="page" id="p-konular">
   <div id="kwrap"></div>
 </div>
 
 <!-- HEDEFLER -->
-
 <div class="page" id="p-hedef">
   <div class="fcard">
     <div class="flbl">Hedef Net Belirle</div>
@@ -230,13 +186,12 @@ tr:last-child td{border-bottom:none}
       <div class="fg"><label style="color:#ffb340">Sosyal</label><input type="number" id="gi-sos" min="0" max="20" value="12" placeholder="0"></div>
       <div class="fg"><label style="color:#58b4ff">Fen</label><input type="number" id="gi-fen" min="0" max="20" value="12" placeholder="0"></div>
     </div>
-    <div class="brow"><button class="btn btn-p" onclick="saveGoals()">Kaydet</button></div>
+    <div class="brow"><button class="btn btn-p" id="btn-goal-save">Kaydet</button></div>
   </div>
   <div id="gdisplay"></div>
 </div>
 
 <!-- ÇALIŞMA -->
-
 <div class="page" id="p-calisma">
   <div class="sg4" id="st-totals"></div>
   <div class="card">
@@ -246,7 +201,6 @@ tr:last-child td{border-bottom:none}
 </div>
 
 <!-- GEÇMİŞ -->
-
 <div class="page" id="p-gecmis">
   <div class="card">
     <div class="twrap" id="htbl"></div>
@@ -267,15 +221,14 @@ var CH={};
 
 function ld(){try{var r=JSON.parse(localStorage.getItem(KEY));return r||def();}catch(e){return def();}}
 function def(){return{entries:[],topics:{mat:[],tur:[],sos:[],fen:[]},goals:{mat:25,tur:28,sos:12,fen:12},study:[]};}
-function sv(d){try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+function sv(d){try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){console.error("Save error:",e);}}
+function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2200);}
 
-// TABS
-var tabs=document.querySelectorAll('.tab');
-var pages=document.querySelectorAll('.page');
-tabs.forEach(function(btn){
+// TAB NAVIGATION
+document.querySelectorAll('.tab').forEach(function(btn){
   btn.addEventListener('click',function(){
-    tabs.forEach(function(b){b.classList.remove('on');});
-    pages.forEach(function(p){p.classList.remove('on');});
+    document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});
+    document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on');});
     btn.classList.add('on');
     var pg=btn.getAttribute('data-p');
     document.getElementById('p-'+pg).classList.add('on');
@@ -287,6 +240,7 @@ tabs.forEach(function(btn){
   });
 });
 
+// BUILD FORMS
 function buildForms(){
   document.getElementById('g-date').value=new Date().toISOString().split('T')[0];
   var sf='';
@@ -304,208 +258,228 @@ function buildForms(){
       +'</div>';
   });
   document.getElementById('sforms').innerHTML=sf;
+  
+  // Load goals into input fields
+  var d=ld();
+  S.forEach(function(s){
+    var inp=document.getElementById('gi-'+s.key);
+    if(inp)inp.value=d.goals[s.key]||0;
+  });
 }
 
 function cNet(k){
-var dv=+(document.getElementById(k+'-d').value)||0;
-var yv=+(document.getElementById(k+'-y').value)||0;
-document.getElementById(k+'-net').textContent=(dv-yv/4).toFixed(2);
+  var dv=+(document.getElementById(k+'-d').value)||0;
+  var yv=+(document.getElementById(k+'-y').value)||0;
+  document.getElementById(k+'-net').textContent=(dv-yv/4).toFixed(2);
 }
 
 function clearForm(){
-S.forEach(function(s){
-['d','y','b'].forEach(function(f){var el=document.getElementById(s.key+'-'+f);if(el)el.value='';});
-var n=document.getElementById(s.key+'-net');if(n)n.textContent='0.00';
-var w=document.getElementById(s.key+'-wr');if(w)w.value='';
-var t=document.getElementById('st-'+s.key);if(t)t.value='';
-});
+  S.forEach(function(s){
+    ['d','y','b'].forEach(function(f){var el=document.getElementById(s.key+'-'+f);if(el)el.value='';});
+    var n=document.getElementById(s.key+'-net');if(n)n.textContent='0.00';
+    var w=document.getElementById(s.key+'-wr');if(w)w.value='';
+    var t=document.getElementById('st-'+s.key);if(t)t.value='';
+  });
 }
 
 function saveEntry(){
-var date=document.getElementById('g-date').value;
-var name=document.getElementById('g-name').value.trim();
-if(!date){toast('Tarih seç!');return;}
-var d=ld();
-var entry={date:date,name:name,id:Date.now()};
-S.forEach(function(s){
-var dg=+(document.getElementById(s.key+'-d').value)||0;
-var yg=+(document.getElementById(s.key+'-y').value)||0;
-var bg=+(document.getElementById(s.key+'-b').value)||0;
-entry[s.key]={d:dg,y:yg,b:bg,net:+(dg-yg/4).toFixed(2)};
-var wr=document.getElementById(s.key+'-wr').value.trim();
-if(wr){
-wr.split(/[,،\n]+/).map(function(t){return t.trim();}).filter(Boolean).forEach(function(topic){
-var ex=null;
-for(var i=0;i<d.topics[s.key].length;i++){if(d.topics[s.key][i].text.toLowerCase()===topic.toLowerCase()){ex=d.topics[s.key][i];break;}}
-if(ex){ex.count=(ex.count||1)+1;}
-else{d.topics[s.key].push({text:topic,count:1,done:false,id:Date.now()+Math.random()});}
-});
-}
-var st=+(document.getElementById('st-'+s.key).value)||0;
-if(st>0)d.study.push({date:date,subject:s.key,minutes:st});
-});
-d.entries.push(entry);
-d.entries.sort(function(a,b){return a.date<b.date?-1:1;});
-sv(d);clearForm();toast('✓ Kaydedildi!');
-var tot=S.reduce(function(a,s){return a+(entry[s.key]?entry[s.key].net:0);},0);
-var tg=S.reduce(function(a,s){return a+(d.goals[s.key]||0);},0);
-if(tot>=tg)confetti();
-}
-
-function rDash(){
-var d=ld();var E=d.entries;var last=E.length?E[E.length-1]:null;
-var tg=S.reduce(function(a,s){return a+(d.goals[s.key]||0);},0);
-document.getElementById('d-glbl').textContent=tg;
-if(last){
-var tot=S.reduce(function(a,s){return a+(last[s.key]?last[s.key].net:0);},0);
-document.getElementById('d-total').textContent=tot.toFixed(1);
-var pct=Math.min(100,Math.round(tot/tg*100));
-document.getElementById('d-pct').textContent='%'+pct;
-document.getElementById('d-prog').style.width=pct+'%';
-} else {document.getElementById('d-total').textContent='—';document.getElementById('d-pct').textContent='—';}
-
-var dc='';
-S.forEach(function(s){
-var nets=[];E.forEach(function(e){if(e[s.key]!=null)nets.push(e[s.key].net);});
-var ln=nets.length?nets[nets.length-1]:null;
-var avg=nets.length?(nets.reduce(function(a,b){return a+b;},0)/nets.length).toFixed(1):null;
-var prev=nets.length>1?nets[nets.length-2]:null;
-var tr='<span class="trend t-eq">veri yok</span>';
-if(ln!==null&&prev!==null){var diff=(ln-prev).toFixed(1);tr=ln>prev?'<span class="trend t-up">↑ +'+diff+'</span>':ln<prev?'<span class="trend t-dn">↓ '+diff+'</span>':'<span class="trend t-eq">→ Sabit</span>';}
-dc+='<div class="scard" style="--c:'+s.c+'"><div class="scard-lbl">'+s.label+'</div><div class="scard-net">'+(ln!==null?ln.toFixed(1):'—')+'</div><div class="scard-avg">Ort: '+(avg||'—')+' / '+s.max+'</div>'+tr+'</div>';
-});
-document.getElementById('d-cards').innerHTML=dc;
-
-if(CH.ov)CH.ov.destroy();
-var dates=[];E.forEach(function(e){if(dates.indexOf(e.date)<0)dates.push(e.date);});
-CH.ov=new Chart(document.getElementById('c-ov'),{type:'line',data:{labels:dates.map(fd),datasets:S.map(function(s){return{label:s.short,data:dates.map(function(dt){var e=null;for(var i=0;i<E.length;i++){if(E[i].date===dt){e=E[i];break;}}return e&&e[s.key]?e[s.key].net:null;}),borderColor:s.c,backgroundColor:'transparent',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,tension:.35,spanGaps:true};})},options:copts()});
-
-if(CH.s7)CH.s7.destroy();
-var l7=l7d();
-CH.s7=new Chart(document.getElementById('c-s7'),{type:'bar',data:{labels:l7.map(fd),datasets:S.map(function(s){return{label:s.short,data:l7.map(function(dt){return d.study.filter(function(x){return x.date===dt&&x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);}),backgroundColor:s.c+'88',borderRadius:3};})},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5a7a8a',font:{size:9},boxWidth:8}}},scales:{x:{stacked:true,ticks:{color:'#5a7a8a',font:{size:8}},grid:{display:false}},y:{stacked:true,ticks:{color:'#5a7a8a',font:{size:8}},grid:{color:'#1e2d3d'}}}}});
-
-var all=[];
-S.forEach(function(s){d.topics[s.key].forEach(function(t){if(!t.done)all.push({text:t.text,count:t.count||1,s:s});});});
-all.sort(function(a,b){return b.count-a.count;});
-var wh='';
-all.slice(0,6).forEach(function(t){wh+='<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1e2d3d"><span style="width:7px;height:7px;border-radius:50%;background:'+t.s.c+';flex-shrink:0;display:inline-block"></span><span style="font-size:.82rem;flex:1">'+t.text+'</span><span style="font-size:.7rem;font-weight:700;color:'+t.s.c+'">'+t.count+'x</span></div>';});
-document.getElementById('d-weak').innerHTML=wh||'<div class="empty"><p>Henüz konu yok</p></div>';
-}
-
-function rKonular(){
-var kw='';
-S.forEach(function(s){
-kw+='<div style="margin-bottom:20px">'
-+'<div style="font-size:.65rem;letter-spacing:.1em;color:'+s.c+';text-transform:uppercase;font-weight:700;margin-bottom:10px">'+s.label+'</div>'
-+'<div id="tl-'+s.key+'"></div>'
-+'<div class="addrow"><input type="text" id="ti-'+s.key+'" placeholder="Konu ekle..."><button class="addbtn" style="color:'+s.c+'" onclick="addT(\''+s.key+'\')">+ Ekle</button></div>'
-+'</div>';
-});
-document.getElementById('kwrap').innerHTML=kw;
-S.forEach(function(s){rTopics(s.key);});
-}
-
-function rTopics(k){
-var d=ld();
-var s=null;for(var i=0;i<S.length;i++){if(S[i].key===k){s=S[i];break;}}
-var el=document.getElementById('tl-'+k);if(!el)return;
-var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
-var h='';
-sorted.forEach(function(t,i){
-h+='<div class="titem'+(t.done?' done':'')+'" onclick="togT(\''+k+'\','+i+')">'
-+'<span class="tcnt" style="background:'+s.c+'18;color:'+s.c+'">'+(t.count||1)+'x</span>'
-+'<span class="tname">'+t.text+'</span>'
-+'<span style="font-size:.85rem">'+(t.done?'✓':'')+'</span>'
-+'<button class="btn-d" onclick="event.stopPropagation();delT(\''+k+'\','+i+')">✕</button>'
-+'</div>';
-});
-el.innerHTML=h||'<div class="empty" style="padding:12px"><p>Henüz konu yok</p></div>';
-}
-
-function addT(k){
-var inp=document.getElementById('ti-'+k);var txt=inp.value.trim();if(!txt)return;
-var d=ld();var ex=null;
-for(var i=0;i<d.topics[k].length;i++){if(d.topics[k][i].text.toLowerCase()===txt.toLowerCase()){ex=d.topics[k][i];break;}}
-if(ex){ex.count=(ex.count||1)+1;}else{d.topics[k].push({text:txt,count:1,done:false,id:Date.now()});}
-inp.value='';sv(d);rTopics(k);
-}
-
-function togT(k,i){
-var d=ld();var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
-var id=sorted[i].id;
-for(var j=0;j<d.topics[k].length;j++){if(d.topics[k][j].id===id){d.topics[k][j].done=!d.topics[k][j].done;break;}}
-sv(d);rTopics(k);
-}
-
-function delT(k,i){
-var d=ld();var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
-var id=sorted[i].id;
-d.topics[k]=d.topics[k].filter(function(t){return t.id!==id;});
-sv(d);rTopics(k);
-}
-
-function rHedef(){
-var d=ld();
-S.forEach(function(s){
-  var inp=document.getElementById('gi-'+s.key);
-  if(inp)inp.value=d.goals[s.key]||0;
-});
-var h='';
-S.forEach(function(s){
-var nets=[];d.entries.forEach(function(e){if(e[s.key])nets.push(e[s.key].net);});
-var ln=nets.length?nets[nets.length-1]:0;
-var g=d.goals[s.key]||0;
-var pct=g>0?Math.min(100,Math.round(ln/g*100)):0;
-h+='<div class="gitem" style="--c:'+s.c+'"><div class="ghead"><span class="gsubj">'+s.label+'</span><span class="gnums">Son: <b>'+(ln?ln.toFixed(1):'—')+'</b> / Hedef: <b>'+g+'</b></span></div><div class="gbar"><div class="gbarfill" style="width:'+pct+'%;background:'+s.c+'"></div></div><div class="gstatus">'+(pct>=100?'🎉 Hedefe ulaştın!':ln?'Hedefe '+(g-ln).toFixed(1)+' net kaldı (%'+pct+')':'Henüz deneme yok')+'</div></div>';
-});
-document.getElementById('gdisplay').innerHTML=h;
+  var date=document.getElementById('g-date').value;
+  var name=document.getElementById('g-name').value.trim();
+  if(!date){toast('Tarih seç!');return;}
+  var d=ld();
+  var entry={date:date,name:name,id:Date.now()};
+  S.forEach(function(s){
+    var dg=+(document.getElementById(s.key+'-d').value)||0;
+    var yg=+(document.getElementById(s.key+'-y').value)||0;
+    var bg=+(document.getElementById(s.key+'-b').value)||0;
+    entry[s.key]={d:dg,y:yg,b:bg,net:+(dg-yg/4).toFixed(2)};
+    var wr=document.getElementById(s.key+'-wr').value.trim();
+    if(wr){
+      wr.split(/[,،\n]+/).map(function(t){return t.trim();}).filter(Boolean).forEach(function(topic){
+        var ex=null;
+        for(var i=0;i<d.topics[s.key].length;i++){if(d.topics[s.key][i].text.toLowerCase()===topic.toLowerCase()){ex=d.topics[s.key][i];break;}}
+        if(ex){ex.count=(ex.count||1)+1;}
+        else{d.topics[s.key].push({text:topic,count:1,done:false,id:Date.now()+Math.random()});}
+      });
+    }
+    var st=+(document.getElementById('st-'+s.key).value)||0;
+    if(st>0)d.study.push({date:date,subject:s.key,minutes:st});
+  });
+  d.entries.push(entry);
+  d.entries.sort(function(a,b){return a.date<b.date?-1:1;});
+  sv(d);clearForm();toast('✓ Kaydedildi!');
+  var tot=S.reduce(function(a,s){return a+(entry[s.key]?entry[s.key].net:0);},0);
+  var tg=S.reduce(function(a,s){return a+(d.goals[s.key]||0);},0);
+  if(tot>=tg)confetti();
 }
 
 function saveGoals(){
-var d=ld();
-S.forEach(function(s){d.goals[s.key]=+(document.getElementById('gi-'+s.key).value)||0;});
-sv(d);toast('✓ Hedefler kaydedildi!');rHedef();
+  var d=ld();
+  S.forEach(function(s){d.goals[s.key]=+(document.getElementById('gi-'+s.key).value)||0;});
+  sv(d);toast('✓ Hedefler kaydedildi!');rHedef();
 }
 
+// DASHBOARD
+function rDash(){
+  var d=ld();var E=d.entries;var last=E.length?E[E.length-1]:null;
+  var tg=S.reduce(function(a,s){return a+(d.goals[s.key]||0);},0);
+  document.getElementById('d-glbl').textContent=tg;
+  if(last){
+    var tot=S.reduce(function(a,s){return a+(last[s.key]?last[s.key].net:0);},0);
+    document.getElementById('d-total').textContent=tot.toFixed(1);
+    var pct=Math.min(100,Math.round(tot/tg*100));
+    document.getElementById('d-pct').textContent='%'+pct;
+    document.getElementById('d-prog').style.width=pct+'%';
+  } else {document.getElementById('d-total').textContent='—';document.getElementById('d-pct').textContent='—';}
+
+  var dc='';
+  S.forEach(function(s){
+    var nets=[];E.forEach(function(e){if(e[s.key]!=null)nets.push(e[s.key].net);});
+    var ln=nets.length?nets[nets.length-1]:null;
+    var avg=nets.length?(nets.reduce(function(a,b){return a+b;},0)/nets.length).toFixed(1):null;
+    var prev=nets.length>1?nets[nets.length-2]:null;
+    var tr='<span class="trend t-eq">veri yok</span>';
+    if(ln!==null&&prev!==null){var diff=(ln-prev).toFixed(1);tr=ln>prev?'<span class="trend t-up">↑ +'+diff+'</span>':ln<prev?'<span class="trend t-dn">↓ '+diff+'</span>':'<span class="trend t-eq">→ Sabit</span>';}
+    dc+='<div class="scard" style="--c:'+s.c+'"><div class="scard-lbl">'+s.label+'</div><div class="scard-net">'+(ln!==null?ln.toFixed(1):'—')+'</div><div class="scard-avg">Ort: '+(avg||'—')+' / '+s.max+'</div>'+tr+'</div>';
+  });
+  document.getElementById('d-cards').innerHTML=dc;
+
+  if(CH.ov)CH.ov.destroy();
+  var dates=[];E.forEach(function(e){if(dates.indexOf(e.date)<0)dates.push(e.date);});
+  CH.ov=new Chart(document.getElementById('c-ov'),{type:'line',data:{labels:dates.map(fd),datasets:S.map(function(s){return{label:s.short,data:dates.map(function(dt){var e=null;for(var i=0;i<E.length;i++){if(E[i].date===dt){e=E[i];break;}}return e&&e[s.key]?e[s.key].net:null;}),borderColor:s.c,backgroundColor:'transparent',borderWidth:2,pointRadius:3,pointBackgroundColor:s.c,tension:.35,spanGaps:true};})},options:copts()});
+
+  if(CH.s7)CH.s7.destroy();
+  var l7=l7d();
+  CH.s7=new Chart(document.getElementById('c-s7'),{type:'bar',data:{labels:l7.map(fd),datasets:S.map(function(s){return{label:s.short,data:l7.map(function(dt){return d.study.filter(function(x){return x.date===dt&&x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);}),backgroundColor:s.c+'88',borderRadius:3};})},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5a7a8a',font:{size:9},boxWidth:8}}},scales:{x:{stacked:true,ticks:{color:'#5a7a8a',font:{size:8}},grid:{display:false}},y:{stacked:true,ticks:{color:'#5a7a8a',font:{size:8}},grid:{color:'#1e2d3d'}}}}});
+
+  var all=[];
+  S.forEach(function(s){d.topics[s.key].forEach(function(t){if(!t.done)all.push({text:t.text,count:t.count||1,s:s});});});
+  all.sort(function(a,b){return b.count-a.count;});
+  var wh='';
+  all.slice(0,6).forEach(function(t){wh+='<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1e2d3d"><span style="width:7px;height:7px;border-radius:50%;background:'+t.s.c+';flex-shrink:0;display:inline-block"></span><span style="font-size:.82rem;flex:1">'+t.text+'</span><span style="font-size:.7rem;font-weight:700;color:'+t.s.c+'">'+t.count+'x</span></div>';});
+  document.getElementById('d-weak').innerHTML=wh||'<div class="empty"><p>Henüz konu yok</p></div>';
+}
+
+// KONULAR
+function rKonular(){
+  var kw='';
+  S.forEach(function(s){
+    kw+='<div style="margin-bottom:20px">'
+      +'<div style="font-size:.65rem;letter-spacing:.1em;color:'+s.c+';text-transform:uppercase;font-weight:700;margin-bottom:10px">'+s.label+'</div>'
+      +'<div id="tl-'+s.key+'"></div>'
+      +'<div class="addrow"><input type="text" id="ti-'+s.key+'" placeholder="Konu ekle..."><button class="addbtn" style="color:'+s.c+'" id="addbtn-'+s.key+'">+ Ekle</button></div>'
+      +'</div>';
+  });
+  document.getElementById('kwrap').innerHTML=kw;
+  S.forEach(function(s){rTopics(s.key);});
+  
+  // Add button listeners
+  S.forEach(function(s){
+    document.getElementById('addbtn-'+s.key).addEventListener('click',function(){addT(s.key);});
+  });
+}
+
+function rTopics(k){
+  var d=ld();
+  var s=null;for(var i=0;i<S.length;i++){if(S[i].key===k){s=S[i];break;}}
+  var el=document.getElementById('tl-'+k);if(!el)return;
+  var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
+  var h='';
+  sorted.forEach(function(t,i){
+    h+='<div class="titem'+(t.done?' done':'')+'" id="titem-'+k+'-'+i+'" onclick="togT(\''+k+'\','+i+')">'
+      +'<span class="tcnt" style="background:'+s.c+'18;color:'+s.c+'">'+(t.count||1)+'x</span>'
+      +'<span class="tname">'+t.text+'</span>'
+      +'<span style="font-size:.85rem">'+(t.done?'✓':'')+'</span>'
+      +'<button class="btn-d" id="delbtn-'+k+'-'+i+'" onclick="event.stopPropagation();delT(\''+k+'\','+i+')">✕</button>'
+      +'</div>';
+  });
+  el.innerHTML=h||'<div class="empty" style="padding:12px"><p>Henüz konu yok</p></div>';
+}
+
+function addT(k){
+  var inp=document.getElementById('ti-'+k);var txt=inp.value.trim();if(!txt)return;
+  var d=ld();var ex=null;
+  for(var i=0;i<d.topics[k].length;i++){if(d.topics[k][i].text.toLowerCase()===txt.toLowerCase()){ex=d.topics[k][i];break;}}
+  if(ex){ex.count=(ex.count||1)+1;}else{d.topics[k].push({text:txt,count:1,done:false,id:Date.now()});}
+  inp.value='';sv(d);rTopics(k);
+  toast('✓ Konu eklendi!');
+}
+
+function togT(k,i){
+  var d=ld();var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
+  var id=sorted[i].id;
+  for(var j=0;j<d.topics[k].length;j++){if(d.topics[k][j].id===id){d.topics[k][j].done=!d.topics[k][j].done;break;}}
+  sv(d);rTopics(k);
+}
+
+function delT(k,i){
+  var d=ld();var sorted=d.topics[k].slice().sort(function(a,b){return (b.count||1)-(a.count||1);});
+  var id=sorted[i].id;
+  d.topics[k]=d.topics[k].filter(function(t){return t.id!==id;});
+  sv(d);rTopics(k);
+  toast('✓ Silindi!');
+}
+
+// HEDEF
+function rHedef(){
+  var d=ld();var h='';
+  S.forEach(function(s){
+    var nets=[];d.entries.forEach(function(e){if(e[s.key])nets.push(e[s.key].net);});
+    var ln=nets.length?nets[nets.length-1]:0;
+    var g=d.goals[s.key]||0;
+    var pct=g>0?Math.min(100,Math.round(ln/g*100)):0;
+    h+='<div class="gitem" style="--c:'+s.c+'"><div class="ghead"><span class="gsubj">'+s.label+'</span><span class="gnums">Son: <b>'+(ln?ln.toFixed(1):'—')+'</b> / Hedef: <b>'+g+'</b></span></div><div class="gbar"><div class="gbarfill" style="width:'+pct+'%;background:'+s.c+'"></div></div><div class="gstatus">'+(pct>=100?'🎉 Hedefe ulaştın!':ln?'Hedefe '+(g-ln).toFixed(1)+' net kaldı (%'+pct+')':'Henüz deneme yok')+'</div></div>';
+  });
+  document.getElementById('gdisplay').innerHTML=h;
+}
+
+// ÇALIŞMA
 function rCalisma(){
-var d=ld();var h='';
-S.forEach(function(s){
-var tot=d.study.filter(function(x){return x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);
-var hh=Math.floor(tot/60),m=tot%60;
-h+='<div class="stcard" style="--c:'+s.c+'"><div class="stsubj">'+s.label+'</div><div class="sttotal">'+(hh>0?hh+'s ':'')+m+'dk</div><div class="stunit">Toplam</div></div>';
-});
-document.getElementById('st-totals').innerHTML=h;
-if(CH.s14)CH.s14.destroy();
-var l14=l14d();
-CH.s14=new Chart(document.getElementById('c-s14'),{type:'bar',data:{labels:l14.map(fd),datasets:S.map(function(s){return{label:s.label,data:l14.map(function(dt){return d.study.filter(function(x){return x.date===dt&&x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);}),backgroundColor:s.c+'88',borderRadius:4};})},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5a7a8a',font:{size:10},boxWidth:10}}},scales:{x:{stacked:true,ticks:{color:'#5a7a8a',font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#5a7a8a',font:{size:9},callback:function(v){return v+'dk';}},grid:{color:'#1e2d3d'}}}}});
+  var d=ld();var h='';
+  S.forEach(function(s){
+    var tot=d.study.filter(function(x){return x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);
+    var hh=Math.floor(tot/60),m=tot%60;
+    h+='<div class="stcard" style="--c:'+s.c+'"><div class="stsubj">'+s.label+'</div><div class="sttotal">'+(hh>0?hh+'s ':'')+m+'dk</div><div class="stunit">Toplam</div></div>';
+  });
+  document.getElementById('st-totals').innerHTML=h;
+  if(CH.s14)CH.s14.destroy();
+  var l14=l14d();
+  CH.s14=new Chart(document.getElementById('c-s14'),{type:'bar',data:{labels:l14.map(fd),datasets:S.map(function(s){return{label:s.label,data:l14.map(function(dt){return d.study.filter(function(x){return x.date===dt&&x.subject===s.key;}).reduce(function(a,b){return a+b.minutes;},0);}),backgroundColor:s.c+'88',borderRadius:4};})},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5a7a8a',font:{size:10},boxWidth:10}}},scales:{x:{stacked:true,ticks:{color:'#5a7a8a',font:{size:9}},grid:{display:false}},y:{stacked:true,ticks:{color:'#5a7a8a',font:{size:9},callback:function(v){return v+'dk';}},grid:{color:'#1e2d3d'}}}}});
 }
 
+// GEÇMİŞ
 function rGecmis(){
-var d=ld();var E=d.entries.slice().reverse();var el=document.getElementById('htbl');
-if(!E.length){el.innerHTML='<div class="empty"><p>📭 Henüz deneme yok</p></div>';return;}
-var h='<table><thead><tr><th>Tarih</th>';
-S.forEach(function(s){h+='<th style="color:'+s.c+'">'+s.short+'</th>';});
-h+='<th>Top.</th><th></th></tr></thead><tbody>';
-E.forEach(function(e){
-var tot=S.reduce(function(a,s){return a+(e[s.key]?e[s.key].net:0);},0);
-var pc=tot>=85?'#3ddc97':tot>=60?'#ffb340':'#ff5c6a';
-h+='<tr><td><div style="font-size:.76rem">'+fd(e.date)+'</div>'+(e.name?'<div style="font-size:.66rem;color:#5a7a8a">'+e.name+'</div>':'')+'</td>';
-S.forEach(function(s){var n=e[s.key]?e[s.key].net:null;var c=n>=s.max*.7?'#3ddc97':n>=s.max*.4?'#ffb340':'#ff5c6a';h+='<td><span class="pill" style="background:'+c+'18;color:'+c+'">'+(n!=null?n.toFixed(1):'—')+'</span></td>';});
-h+='<td><span class="pill" style="background:'+pc+'18;color:'+pc+'">'+tot.toFixed(1)+'</span></td><td><button class="btn-d" onclick="delE('+e.id+')">✕</button></td></tr>';
-});
-h+='</tbody></table>';
-el.innerHTML=h;
+  var d=ld();var E=d.entries.slice().reverse();var el=document.getElementById('htbl');
+  if(!E.length){el.innerHTML='<div class="empty"><p>📭 Henüz deneme yok</p></div>';return;}
+  var h='<table><thead><tr><th>Tarih</th>';
+  S.forEach(function(s){h+='<th style="color:'+s.c+'">'+s.short+'</th>';});
+  h+='<th>Top.</th><th></th></tr></thead><tbody>';
+  E.forEach(function(e){
+    var tot=S.reduce(function(a,s){return a+(e[s.key]?e[s.key].net:0);},0);
+    var pc=tot>=85?'#3ddc97':tot>=60?'#ffb340':'#ff5c6a';
+    h+='<tr><td><div style="font-size:.76rem">'+fd(e.date)+'</div>'+(e.name?'<div style="font-size:.66rem;color:#5a7a8a">'+e.name+'</div>':'')+'</td>';
+    S.forEach(function(s){var n=e[s.key]?e[s.key].net:null;var c=n>=s.max*.7?'#3ddc97':n>=s.max*.4?'#ffb340':'#ff5c6a';h+='<td><span class="pill" style="background:'+c+'18;color:'+c+'">'+(n!=null?n.toFixed(1):'—')+'</span></td>';});
+    h+='<td><span class="pill" style="background:'+pc+'18;color:'+pc+'">'+tot.toFixed(1)+'</span></td><td><button class="btn-d" id="delbtn-entry-'+e.id+'" onclick="delE('+e.id+')">✕</button></td></tr>';
+  });
+  h+='</tbody></table>';
+  el.innerHTML=h;
 }
 
 function delE(id){var d=ld();d.entries=d.entries.filter(function(e){return e.id!==id;});sv(d);rGecmis();toast('Silindi');}
 
+// UTILITIES
 function copts(){return{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5a7a8a',font:{size:10},boxWidth:10}}},scales:{x:{ticks:{color:'#5a7a8a',font:{size:9}},grid:{color:'#1e2d3d'}},y:{min:0,ticks:{color:'#5a7a8a',font:{size:9}},grid:{color:'#1e2d3d'}}}};}
 function fd(dt){return new Date(dt+'T12:00:00').toLocaleDateString('tr-TR',{day:'2-digit',month:'short'});}
 function l7d(){var a=[];for(var i=6;i>=0;i--){var dd=new Date();dd.setDate(dd.getDate()-i);a.push(dd.toISOString().split('T')[0]);}return a;}
 function l14d(){var a=[];for(var i=13;i>=0;i--){var dd=new Date();dd.setDate(dd.getDate()-i);a.push(dd.toISOString().split('T')[0]);}return a;}
-function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2200);}
 function confetti(){var cols=['#3ddc97','#ff5c6a','#ffb340','#58b4ff','#fff'];for(var i=0;i<30;i++){(function(i){setTimeout(function(){var el=document.createElement('div');el.className='cp';el.style.cssText='left:'+Math.random()*100+'vw;top:-10px;background:'+cols[Math.floor(Math.random()*cols.length)]+';animation-duration:'+(1+Math.random())+'s';document.body.appendChild(el);setTimeout(function(){el.remove();},1800);},i*50);})(i);}}
 
+// BUTTON EVENT LISTENERS
+document.getElementById('btn-save').addEventListener('click',saveEntry);
+document.getElementById('btn-clear').addEventListener('click',clearForm);
+document.getElementById('btn-goal-save').addEventListener('click',saveGoals);
+
+// INITIALIZE
 buildForms();
 rDash();
 </script>
