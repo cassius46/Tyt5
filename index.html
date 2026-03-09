@@ -153,12 +153,12 @@ tr:last-child td{border-bottom:none}
 <div class="topbar">
   <span class="logo">TYT</span>
   <div class="tabs">
-    <button class="tab on" onclick="switchPage('dash')">📊 Dashboard</button>
-    <button class="tab" onclick="switchPage('giris')">➕ Giriş</button>
-    <button class="tab" onclick="switchPage('konular')">❌ Konular</button>
-    <button class="tab" onclick="switchPage('hedef')">🎯 Hedefler</button>
-    <button class="tab" onclick="switchPage('calisma')">⏱️ Çalışma</button>
-    <button class="tab" onclick="switchPage('gecmis')">📋 Geçmiş</button>
+    <button class="tab on" data-page="dash" onclick="switchPage(this, 'dash')">📊 Dashboard</button>
+    <button class="tab" data-page="giris" onclick="switchPage(this, 'giris')">➕ Giriş</button>
+    <button class="tab" data-page="konular" onclick="switchPage(this, 'konular')">❌ Konular</button>
+    <button class="tab" data-page="hedef" onclick="switchPage(this, 'hedef')">🎯 Hedefler</button>
+    <button class="tab" data-page="calisma" onclick="switchPage(this, 'calisma')">⏱️ Çalışma</button>
+    <button class="tab" data-page="gecmis" onclick="switchPage(this, 'gecmis')">📋 Geçmiş</button>
   </div>
 </div>
 
@@ -260,23 +260,14 @@ function def(){return{entries:[],topics:{mat:[],tur:[],sos:[],fen:[]},goals:{mat
 function sv(d){try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
 
 // SWITCH PAGE FUNCTION
-function switchPage(pageName){
+function switchPage(btn, pageName){
   var tabs=document.querySelectorAll('.tab');
   var pages=document.querySelectorAll('.page');
   
   tabs.forEach(function(b){b.classList.remove('on');});
   pages.forEach(function(p){p.classList.remove('on');});
   
-  // Tıklanan butonu bul ve aktif yap
-  var buttons=document.querySelectorAll('.tab');
-  for(var i=0;i<buttons.length;i++){
-    var attr=buttons[i].getAttribute('onclick');
-    if(attr && attr.includes(pageName)){
-      buttons[i].classList.add('on');
-      break;
-    }
-  }
-  
+  btn.classList.add('on');
   document.getElementById('p-'+pageName).classList.add('on');
   
   if(pageName==='dash')rDash();
