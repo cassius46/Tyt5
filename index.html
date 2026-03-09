@@ -153,12 +153,12 @@ tr:last-child td{border-bottom:none}
 <div class="topbar">
   <span class="logo">TYT</span>
   <div class="tabs">
-    <button class="tab on" data-p="dash">📊 Dashboard</button>
-    <button class="tab" data-p="giris">➕ Giriş</button>
-    <button class="tab" data-p="konular">❌ Konular</button>
-    <button class="tab" data-p="hedef">🎯 Hedefler</button>
-    <button class="tab" data-p="calisma">⏱️ Çalışma</button>
-    <button class="tab" data-p="gecmis">📋 Geçmiş</button>
+    <button class="tab on" onclick="switchPage('dash')">📊 Dashboard</button>
+    <button class="tab" onclick="switchPage('giris')">➕ Giriş</button>
+    <button class="tab" onclick="switchPage('konular')">❌ Konular</button>
+    <button class="tab" onclick="switchPage('hedef')">🎯 Hedefler</button>
+    <button class="tab" onclick="switchPage('calisma')">⏱️ Çalışma</button>
+    <button class="tab" onclick="switchPage('gecmis')">📋 Geçmiş</button>
   </div>
 </div>
 
@@ -259,23 +259,27 @@ function ld(){try{var r=JSON.parse(localStorage.getItem(KEY));return r||def();}c
 function def(){return{entries:[],topics:{mat:[],tur:[],sos:[],fen:[]},goals:{mat:25,tur:28,sos:12,fen:12},study:[]};}
 function sv(d){try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
 
+// SWITCH PAGE FUNCTION
+function switchPage(pageName){
+  var tabs=document.querySelectorAll('.tab');
+  var pages=document.querySelectorAll('.page');
+  
+  tabs.forEach(function(b){b.classList.remove('on');});
+  pages.forEach(function(p){p.classList.remove('on');});
+  
+  event.target.classList.add('on');
+  document.getElementById('p-'+pageName).classList.add('on');
+  
+  if(pageName==='dash')rDash();
+  if(pageName==='konular')rKonular();
+  if(pageName==='hedef')rHedef();
+  if(pageName==='calisma')rCalisma();
+  if(pageName==='gecmis')rGecmis();
+}
+
 // TABS
 var tabs=document.querySelectorAll('.tab');
 var pages=document.querySelectorAll('.page');
-tabs.forEach(function(btn){
-  btn.addEventListener('click',function(){
-    tabs.forEach(function(b){b.classList.remove('on');});
-    pages.forEach(function(p){p.classList.remove('on');});
-    btn.classList.add('on');
-    var pg=btn.getAttribute('data-p');
-    document.getElementById('p-'+pg).classList.add('on');
-    if(pg==='dash')rDash();
-    if(pg==='konular')rKonular();
-    if(pg==='hedef')rHedef();
-    if(pg==='calisma')rCalisma();
-    if(pg==='gecmis')rGecmis();
-  });
-});
 
 function buildForms(){
   document.getElementById('g-date').value=new Date().toISOString().split('T')[0];
