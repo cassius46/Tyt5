@@ -3,104 +3,92 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TYT Takip</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow-x:hidden}
-body{background:#070910;color:#cdd9e5;font-family:system-ui,sans-serif;min-height:100vh}
+body{background:#070910;color:#cdd9e5;font-family:system-ui,sans-serif}
 
-.topbar{position:sticky;top:0;z-index:999;background:#070910;border-bottom:1px solid #1e2d3d;padding:10px 12px 8px}
-.logo{font-weight:900;font-size:1rem;color:#3ddc97;margin-bottom:8px;display:block}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 8px}
-.tab{padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:700;border:1px solid #1e2d3d;background:#111820;color:#5a7a8a;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.navbar{position:sticky;top:0;z-index:99;background:#070910;border-bottom:1px solid #1e2d3d;padding:12px}
+.tabs{display:flex;gap:8px;overflow-x:auto}
+.tab{padding:10px 16px;border:1px solid #1e2d3d;background:#111820;color:#5a7a8a;border-radius:6px;cursor:pointer;white-space:nowrap;font-weight:600;font-size:.85rem}
 .tab.active{background:#3ddc97;color:#070910;border-color:#3ddc97}
 
-.page{display:none;padding:14px 12px 80px}
-.page.active{display:block}
+.container{padding:14px;max-width:600px;margin:0 auto;padding-bottom:100px}
+
+.page{display:none}
+.page.show{display:block}
 
 .card{background:#111820;border:1px solid #1e2d3d;border-radius:12px;padding:14px;margin-bottom:12px}
-.title{font-size:.6rem;letter-spacing:.12em;color:#5a7a8a;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.card-title{font-size:.65rem;color:#5a7a8a;text-transform:uppercase;font-weight:700;margin-bottom:10px}
 
-.total{background:linear-gradient(135deg,#0d1117,#161f2b);border:1px solid #253545;border-radius:12px;padding:16px;margin-bottom:12px}
-.total-num{font-size:2.4rem;font-weight:900;color:#3ddc97;margin:8px 0}
+.form-group{margin-bottom:10px}
+.form-group label{display:block;font-size:.65rem;color:#5a7a8a;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+.form-group input,
+.form-group textarea{width:100%;padding:10px;background:#070910;border:1px solid #1e2d3d;border-radius:6px;color:#cdd9e5;font-family:inherit}
+.form-group input:focus,
+.form-group textarea:focus{border-color:#3ddc97;outline:none}
 
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
 
-.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
-label{font-size:.65rem;color:#5a7a8a;text-transform:uppercase;font-weight:600}
-input,textarea,select{background:#070910;border:1px solid #1e2d3d;border-radius:8px;color:#cdd9e5;padding:10px;font-family:inherit;font-size:.88rem;width:100%;outline:none}
-input:focus,textarea:focus{border-color:#3ddc97}
+.btn{padding:10px 16px;border:none;border-radius:6px;font-weight:700;cursor:pointer;font-size:.85rem;font-family:inherit}
+.btn-green{background:#3ddc97;color:#070910}
+.btn-gray{background:#161f2b;color:#5a7a8a;border:1px solid #1e2d3d}
+.btn-red{background:rgba(255,92,106,.1);color:#ff5c6a;border:1px solid rgba(255,92,106,.2);padding:6px 12px;font-size:.75rem}
 
-.sblock{border:1px solid #1e2d3d;border-radius:12px;padding:12px;background:#0d1117;border-left:3px solid var(–c);margin-bottom:10px}
-.sblock-title{font-size:.65rem;color:var(–c);text-transform:uppercase;font-weight:700;margin-bottom:8px}
-.netrow{display:flex;justify-content:space-between;background:#070910;border:1px solid #1e2d3d;border-radius:8px;padding:8px 12px;margin-top:8px;font-weight:700}
-.netval{color:var(–c);font-size:1.1rem}
+.buttons{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 
-.btn{padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:700;border:none;cursor:pointer;font-family:inherit}
-.btn-p{background:#3ddc97;color:#070910}
-.btn-g{background:#161f2b;color:#5a7a8a;border:1px solid #1e2d3d}
-.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.item{display:flex;align-items:center;gap:8px;padding:10px;background:#0d1117;border:1px solid #1e2d3d;border-radius:6px;margin-bottom:6px}
+.item-count{background:#3ddc9718;color:#3ddc97;padding:2px 6px;border-radius:12px;font-size:.7rem;font-weight:700;flex-shrink:0}
+.item-name{flex:1;font-size:.82rem}
+.item-del{background:rgba(255,92,106,.1);color:#ff5c6a;border:1px solid rgba(255,92,106,.2);padding:4px 8px;font-size:.7rem;cursor:pointer;border-radius:4px;font-weight:700;font-family:inherit}
 
-.item{display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;background:#0d1117;border:1px solid #1e2d3d;margin-bottom:6px}
-.item.done{opacity:.5}
-.item.done .iname{text-decoration:line-through}
-.icnt{font-size:.65rem;font-weight:700;padding:2px 6px;border-radius:16px;flex-shrink:0}
-.iname{font-size:.82rem;flex:1}
-.idel{background:rgba(255,92,106,.1);color:#ff5c6a;border:1px solid rgba(255,92,106,.2);padding:4px 8px;font-size:.7rem;cursor:pointer;border-radius:4px;font-weight:700}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111820;border:1px solid #3ddc97;color:#3ddc97;padding:10px 20px;border-radius:8px;font-weight:700;font-size:.8rem;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
 
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#111820;border:1px solid #3ddc97;border-radius:10px;padding:10px 20px;font-size:.8rem;color:#3ddc97;opacity:0;transition:all .3s;z-index:9999}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-.empty{text-align:center;padding:30px 20px;color:#5a7a8a}
 table{width:100%;border-collapse:collapse;font-size:.75rem}
-th{text-align:left;color:#5a7a8a;padding:8px 4px;border-bottom:1px solid #1e2d3d;font-weight:700}
-td{padding:8px 4px;border-bottom:1px solid rgba(30,45,61,.3)}
-.pill{display:inline-block;padding:2px 6px;border-radius:16px;font-weight:700;font-size:.7rem}
+th{text-align:left;padding:8px;border-bottom:1px solid #1e2d3d;font-weight:700;color:#5a7a8a}
+td{padding:8px;border-bottom:1px solid #1e2d3d}
 </style>
 
 </head>
 <body>
 
-<div class="topbar">
-  <div class="logo">📊 TYT TAKIP</div>
+<div class="navbar">
+  <div style="font-weight:900;color:#3ddc97;margin-bottom:10px;font-size:1.1rem">📊 TYT TAKIP</div>
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('dash')">Dashboard</button>
-    <button class="tab" onclick="switchTab('entry')">Giriş</button>
-    <button class="tab" onclick="switchTab('topics')">Konular</button>
-    <button class="tab" onclick="switchTab('goals')">Hedefler</button>
-    <button class="tab" onclick="switchTab('study')">Çalışma</button>
-    <button class="tab" onclick="switchTab('history')">Geçmiş</button>
+    <button class="tab active" onclick="openTab('dash')">Dashboard</button>
+    <button class="tab" onclick="openTab('entry')">Giriş</button>
+    <button class="tab" onclick="openTab('topics')">Konular</button>
+    <button class="tab" onclick="openTab('goals')">Hedefler</button>
+    <button class="tab" onclick="openTab('study')">Çalışma</button>
+    <button class="tab" onclick="openTab('history')">Geçmiş</button>
   </div>
 </div>
 
+<div class="container">
+
 <!-- DASHBOARD -->
 
-<div class="page active" id="dash">
-  <div class="total">
-    <div style="font-size:.6rem;color:#5a7a8a;text-transform:uppercase">Son Toplam Net</div>
-    <div class="total-num" id="d-total">—</div>
-    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#5a7a8a;margin:8px 0 4px">
+<div class="page show" id="dash">
+  <div class="card">
+    <div style="font-size:.65rem;color:#5a7a8a;text-transform:uppercase;margin-bottom:6px">Son Toplam Net</div>
+    <div id="d-total" style="font-size:2.2rem;font-weight:900;color:#3ddc97;margin-bottom:10px">—</div>
+    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#5a7a8a;margin-bottom:4px">
       <span>Hedefe İlerleme</span>
       <span id="d-pct">—</span>
     </div>
-    <div style="background:#1e2d3d;height:4px;border-radius:2px;overflow:hidden">
-      <div id="d-prog" style="height:100%;background:#3ddc97;width:0%;border-radius:2px;transition:width .6s"></div>
+    <div style="background:#1e2d3d;height:4px;border-radius:2px;overflow:hidden;margin-bottom:8px">
+      <div id="d-prog" style="height:100%;background:#3ddc97;width:0%;transition:width .4s"></div>
     </div>
-    <div style="font-size:.65rem;color:#5a7a8a;margin-top:6px">Hedef: <span id="d-goal">—</span> net</div>
+    <div style="font-size:.65rem;color:#5a7a8a">Hedef: <span id="d-goal">—</span> net</div>
   </div>
 
-  <div id="d-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px"></div>
+  <div id="d-subjects" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px"></div>
 
   <div class="card">
-    <div class="title">Net Gelişim</div>
-    <canvas id="c-main" style="max-height:200px"></canvas>
-  </div>
-
-  <div class="card">
-    <div class="title">En Çok Yanlış Konular</div>
+    <div class="card-title">En Çok Yanlış Konular</div>
     <div id="d-weak"></div>
   </div>
 </div>
@@ -109,28 +97,46 @@ td{padding:8px 4px;border-bottom:1px solid rgba(30,45,61,.3)}
 
 <div class="page" id="entry">
   <div class="card">
-    <div class="title">Deneme Bilgileri</div>
-    <div class="g2">
-      <div class="fg"><label>Tarih</label><input type="date" id="date"></div>
-      <div class="fg"><label>Deneme Adı</label><input type="text" id="name" placeholder="Opsiyonel"></div>
+    <div class="card-title">Deneme Bilgileri</div>
+    <div class="row2">
+      <div class="form-group">
+        <label>Tarih</label>
+        <input type="date" id="entry-date">
+      </div>
+      <div class="form-group">
+        <label>Deneme Adı</label>
+        <input type="text" id="entry-name" placeholder="Opsiyonel">
+      </div>
     </div>
   </div>
 
-  <div id="subject-forms"></div>
+  <div id="entry-subjects"></div>
 
   <div class="card">
-    <div class="title">Çalışma Süresi (dakika)</div>
-    <div class="g2">
-      <div class="fg"><label style="color:#3ddc97">Matematik</label><input type="number" id="st-mat" min="0" placeholder="0"></div>
-      <div class="fg"><label style="color:#ff5c6a">Türkçe</label><input type="number" id="st-tur" min="0" placeholder="0"></div>
-      <div class="fg"><label style="color:#ffb340">Sosyal</label><input type="number" id="st-sos" min="0" placeholder="0"></div>
-      <div class="fg"><label style="color:#58b4ff">Fen</label><input type="number" id="st-fen" min="0" placeholder="0"></div>
+    <div class="card-title">Çalışma Süresi (dakika)</div>
+    <div class="row2">
+      <div class="form-group">
+        <label style="color:#3ddc97">Matematik</label>
+        <input type="number" id="st-mat" min="0" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#ff5c6a">Türkçe</label>
+        <input type="number" id="st-tur" min="0" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#ffb340">Sosyal</label>
+        <input type="number" id="st-sos" min="0" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#58b4ff">Fen</label>
+        <input type="number" id="st-fen" min="0" placeholder="0">
+      </div>
     </div>
   </div>
 
-  <div class="brow">
-    <button class="btn btn-p" onclick="saveEntry()">💾 Kaydet</button>
-    <button class="btn btn-g" onclick="clearEntry()">Temizle</button>
+  <div class="buttons">
+    <button class="btn btn-green" onclick="saveEntry()">💾 Kaydet</button>
+    <button class="btn btn-gray" onclick="clearEntryForm()">Temizle</button>
   </div>
 </div>
 
@@ -144,14 +150,26 @@ td{padding:8px 4px;border-bottom:1px solid rgba(30,45,61,.3)}
 
 <div class="page" id="goals">
   <div class="card">
-    <div class="title">Hedef Belirle</div>
-    <div class="g2">
-      <div class="fg"><label style="color:#3ddc97">Matematik</label><input type="number" id="g-mat" min="0" max="40" placeholder="0"></div>
-      <div class="fg"><label style="color:#ff5c6a">Türkçe</label><input type="number" id="g-tur" min="0" max="40" placeholder="0"></div>
-      <div class="fg"><label style="color:#ffb340">Sosyal</label><input type="number" id="g-sos" min="0" max="20" placeholder="0"></div>
-      <div class="fg"><label style="color:#58b4ff">Fen</label><input type="number" id="g-fen" min="0" max="20" placeholder="0"></div>
+    <div class="card-title">Hedef Belirle</div>
+    <div class="row2">
+      <div class="form-group">
+        <label style="color:#3ddc97">Matematik</label>
+        <input type="number" id="g-mat" min="0" max="40" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#ff5c6a">Türkçe</label>
+        <input type="number" id="g-tur" min="0" max="40" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#ffb340">Sosyal</label>
+        <input type="number" id="g-sos" min="0" max="20" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label style="color:#58b4ff">Fen</label>
+        <input type="number" id="g-fen" min="0" max="20" placeholder="0">
+      </div>
     </div>
-    <button class="btn btn-p" style="margin-top:10px" onclick="saveGoals()">Kaydet</button>
+    <button class="btn btn-green" onclick="saveGoals()">Kaydet</button>
   </div>
   <div id="goals-display"></div>
 </div>
@@ -159,138 +177,134 @@ td{padding:8px 4px;border-bottom:1px solid rgba(30,45,61,.3)}
 <!-- ÇALIŞMA -->
 
 <div class="page" id="study">
-  <div id="study-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px"></div>
-  <div class="card">
-    <div class="title">14 Günlük Çalışma</div>
-    <canvas id="c-study" style="max-height:250px"></canvas>
-  </div>
+  <div id="study-cards"></div>
 </div>
 
 <!-- GEÇMİŞ -->
 
 <div class="page" id="history">
   <div class="card">
-    <div style="overflow-x:auto">
-      <table id="hist-table"></table>
-    </div>
+    <table id="hist"></table>
   </div>
+</div>
+
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-var subjects=[
+var DB_KEY='tyt_app';
+var SUBJECTS=[
   {k:'mat',n:'Matematik',c:'#3ddc97',m:40},
   {k:'tur',n:'Türkçe',c:'#ff5c6a',m:40},
   {k:'sos',n:'Sosyal',c:'#ffb340',m:20},
   {k:'fen',n:'Fen',c:'#58b4ff',m:20}
 ];
 
-function switchTab(t){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+function openTab(name){
+  var tabs=document.querySelectorAll('.tab');
+  var pages=document.querySelectorAll('.page');
+  
+  tabs.forEach(t=>t.classList.remove('active'));
+  pages.forEach(p=>p.classList.remove('show'));
+  
   event.target.classList.add('active');
-  document.getElementById(t).classList.add('active');
-  if(t==='dash')renderDash();
-  if(t==='topics')renderTopics();
-  if(t==='goals')renderGoals();
-  if(t==='study')renderStudy();
-  if(t==='history')renderHistory();
+  document.getElementById(name).classList.add('show');
+  
+  if(name==='dash')updateDash();
+  if(name==='topics')buildTopics();
+  if(name==='goals')updateGoals();
+  if(name==='study')updateStudy();
+  if(name==='history')updateHistory();
 }
 
-function toast(m){
+function toast(msg){
   var el=document.getElementById('toast');
-  el.textContent=m;
+  el.textContent=msg;
   el.classList.add('show');
   setTimeout(function(){el.classList.remove('show')},2000);
 }
 
 function load(){
-  var d=localStorage.getItem('tyt');
+  var d=localStorage.getItem(DB_KEY);
   return d?JSON.parse(d):{entries:[],topics:{mat:[],tur:[],sos:[],fen:[]},goals:{mat:25,tur:28,sos:12,fen:12},study:[]};
 }
 
 function save(d){
-  localStorage.setItem('tyt',JSON.stringify(d));
+  localStorage.setItem(DB_KEY,JSON.stringify(d));
 }
 
-function calcNet(d,y){return Math.round((d-y/4)*100)/100;}
+function net(d,y){
+  return Math.round((d-y/4)*100)/100;
+}
 
-// BUILD FORMS
-function buildForms(){
-  document.getElementById('date').valueAsDate=new Date();
-  var d=load();
-  
+// BUILD ENTRY FORM
+function buildEntry(){
+  document.getElementById('entry-date').valueAsDate=new Date();
   var html='';
-  subjects.forEach(function(s){
-    html+='<div class="sblock" style="--c:'+s.c+'">'
-      +'<div class="sblock-title">'+s.n+' (Max '+s.m+')</div>'
-      +'<div class="g3">'
-      +'<div class="fg"><label>Doğru</label><input type="number" id="s-'+s.k+'-d" min="0" max="'+s.m+'" placeholder="0" oninput="updateNet(\''+s.k+'\')"></div>'
-      +'<div class="fg"><label>Yanlış</label><input type="number" id="s-'+s.k+'-y" min="0" max="'+s.m+'" placeholder="0" oninput="updateNet(\''+s.k+'\')"></div>'
-      +'<div class="fg"><label>Boş</label><input type="number" id="s-'+s.k+'-b" min="0" max="'+s.m+'" placeholder="0"></div>'
+  SUBJECTS.forEach(s=>{
+    html+='<div class="card" style="border-left:3px solid '+s.c+'">'
+      +'<div class="card-title">'+s.n+' (Max '+s.m+')</div>'
+      +'<div class="row3">'
+      +'<div class="form-group"><label>Doğru</label><input type="number" id="e-'+s.k+'-d" min="0" max="'+s.m+'" oninput="calcNet(\''+s.k+'\')"></div>'
+      +'<div class="form-group"><label>Yanlış</label><input type="number" id="e-'+s.k+'-y" min="0" max="'+s.m+'" oninput="calcNet(\''+s.k+'\')"></div>'
+      +'<div class="form-group"><label>Boş</label><input type="number" id="e-'+s.k+'-b" min="0" max="'+s.m+'"></div>'
       +'</div>'
-      +'<div class="netrow"><span>NET</span><span class="netval" id="n-'+s.k+'">0.00</span></div>'
-      +'<div style="margin-top:8px"><label style="display:block;margin-bottom:4px">Yanlış Konular</label>'
-      +'<textarea id="t-'+s.k+'" placeholder="Virgülle yaz..." style="min-height:50px;resize:none;font-size:.8rem"></textarea></div>'
+      +'<div style="display:flex;justify-content:space-between;padding:8px;background:#070910;border-radius:6px;margin:8px 0;border:1px solid #1e2d3d">'
+      +'<span style="font-size:.7rem;color:#5a7a8a">NET</span>'
+      +'<span style="font-weight:700;color:'+s.c+'" id="n-'+s.k+'">0.00</span>'
+      +'</div>'
+      +'<div class="form-group"><label>Yanlış Konular</label><textarea id="e-'+s.k+'-topics" placeholder="Virgülle yaz..." style="min-height:50px;resize:none;font-size:.8rem"></textarea></div>'
 
 ```
   +'</div>';
 ```
 
 });
-document.getElementById(‘subject-forms’).innerHTML=html;
-
-subjects.forEach(s=>{
-var inp=document.getElementById(‘g-’+s.k);
-if(inp)inp.value=d.goals[s.k]||0;
-});
+document.getElementById(‘entry-subjects’).innerHTML=html;
 }
 
-function updateNet(k){
-var d=parseInt(document.getElementById(‘s-’+k+’-d’).value)||0;
-var y=parseInt(document.getElementById(‘s-’+k+’-y’).value)||0;
-document.getElementById(‘n-’+k).textContent=calcNet(d,y).toFixed(2);
+function calcNet(k){
+var d=parseInt(document.getElementById(‘e-’+k+’-d’).value)||0;
+var y=parseInt(document.getElementById(‘e-’+k+’-y’).value)||0;
+document.getElementById(‘n-’+k).textContent=net(d,y).toFixed(2);
 }
 
-function clearEntry(){
-subjects.forEach(s=>{
-document.getElementById(‘s-’+s.k+’-d’).value=’’;
-document.getElementById(‘s-’+s.k+’-y’).value=’’;
-document.getElementById(‘s-’+s.k+’-b’).value=’’;
+function clearEntryForm(){
+SUBJECTS.forEach(s=>{
+document.getElementById(‘e-’+s.k+’-d’).value=’’;
+document.getElementById(‘e-’+s.k+’-y’).value=’’;
+document.getElementById(‘e-’+s.k+’-b’).value=’’;
+document.getElementById(‘e-’+s.k+’-topics’).value=’’;
 document.getElementById(‘n-’+s.k).textContent=‘0.00’;
-document.getElementById(‘t-’+s.k).value=’’;
 document.getElementById(‘st-’+s.k).value=’’;
 });
 }
 
 function saveEntry(){
-var date=document.getElementById(‘date’).value;
+var date=document.getElementById(‘entry-date’).value;
 if(!date){toast(‘❌ Tarih seçin’);return;}
 
 var d=load();
-var entry={id:Date.now(),date:date,name:document.getElementById(‘name’).value.trim()};
+var entry={id:Date.now(),date:date,name:document.getElementById(‘entry-name’).value.trim()};
 var hasData=false;
 
-subjects.forEach(function(s){
-var dg=parseInt(document.getElementById(‘s-’+s.k+’-d’).value)||0;
-var yg=parseInt(document.getElementById(‘s-’+s.k+’-y’).value)||0;
-var bg=parseInt(document.getElementById(‘s-’+s.k+’-b’).value)||0;
-entry[s.k]={d:dg,y:yg,b:bg,n:calcNet(dg,yg)};
+SUBJECTS.forEach(s=>{
+var dg=parseInt(document.getElementById(‘e-’+s.k+’-d’).value)||0;
+var yg=parseInt(document.getElementById(‘e-’+s.k+’-y’).value)||0;
+var bg=parseInt(document.getElementById(‘e-’+s.k+’-b’).value)||0;
+entry[s.k]={d:dg,y:yg,b:bg,n:net(dg,yg)};
 if(dg>0||yg>0)hasData=true;
 
 ```
-var topics=document.getElementById('t-'+s.k).value.trim();
+var topics=document.getElementById('e-'+s.k+'-topics').value.trim();
 if(topics){
-  topics.split(/[,\n]+/).forEach(function(t){
+  topics.split(/[,\n]+/).forEach(t=>{
     t=t.trim();
     if(!t)return;
     var found=d.topics[s.k].find(x=>x.t.toLowerCase()===t.toLowerCase());
-    if(found){
-      found.c=(found.c||1)+1;
-    }else{
-      d.topics[s.k].push({t:t,c:1,done:false});
-    }
+    if(found)found.c=(found.c||1)+1;
+    else d.topics[s.k].push({t:t,c:1,done:false});
   });
 }
 
@@ -304,79 +318,77 @@ if(!hasData){toast(‘❌ Veri girin’);return;}
 
 d.entries.push(entry);
 save(d);
-clearEntry();
+clearEntryForm();
 toast(‘✅ Kaydedildi’);
-renderDash();
+updateDash();
 }
 
-function renderDash(){
+function updateDash(){
 var d=load();
-var e=d.entries;
-var last=e.length?e[e.length-1]:null;
-var tg=subjects.reduce((a,s)=>a+(d.goals[s.k]||0),0);
+var last=d.entries.length?d.entries[d.entries.length-1]:null;
+var tg=SUBJECTS.reduce((a,s)=>a+(d.goals[s.k]||0),0);
 
 document.getElementById(‘d-goal’).textContent=tg;
 
 if(last){
-var tot=subjects.reduce((a,s)=>a+(last[s.k]?last[s.k].n:0),0);
+var tot=SUBJECTS.reduce((a,s)=>a+(last[s.k]?last[s.k].n:0),0);
 document.getElementById(‘d-total’).textContent=tot.toFixed(1);
-document.getElementById(‘d-pct’).textContent=Math.round(tot/tg*100)+’%’;
-document.getElementById(‘d-prog’).style.width=Math.min(100,tot/tg*100)+’%’;
+var pct=Math.round(tot/tg*100);
+document.getElementById(‘d-pct’).textContent=pct+’%’;
+document.getElementById(‘d-prog’).style.width=Math.min(100,pct)+’%’;
 }
 
 var html=’’;
-subjects.forEach(s=>{
+SUBJECTS.forEach(s=>{
 var nets=[];
-e.forEach(x=>{if(x[s.k])nets.push(x[s.k].n);});
+d.entries.forEach(e=>{if(e[s.k])nets.push(e[s.k].n);});
 var ln=nets.length?nets[nets.length-1]:null;
 var avg=nets.length?(nets.reduce((a,b)=>a+b)/nets.length).toFixed(1):null;
-html+=’<div class="card" style="border-top:3px solid '+s.c+'">’
+html+=’<div class="card" style="border-left:3px solid '+s.c+'">’
 +’<div style="font-size:.6rem;color:'+s.c+';text-transform:uppercase;font-weight:700">’+s.n+’</div>’
-+’<div style="font-size:1.8rem;font-weight:900;color:'+s.c+';margin:6px 0">’+(ln!==null?ln.toFixed(1):’—’)+’</div>’
++’<div style="font-size:1.6rem;font-weight:900;color:'+s.c+';margin:6px 0">’+(ln!==null?ln.toFixed(1):’—’)+’</div>’
 +’<div style="font-size:.7rem;color:#5a7a8a">Ort: ‘+(avg||’—’)+’ / ‘+s.m+’</div>’
 +’</div>’;
 });
-document.getElementById(‘d-cards’).innerHTML=html;
+document.getElementById(‘d-subjects’).innerHTML=html;
 
 var all=[];
-subjects.forEach(s=>d.topics[s.k].forEach(t=>{if(!t.done)all.push({text:t.t,count:t.c||1,s:s});}));
+SUBJECTS.forEach(s=>d.topics[s.k].forEach(t=>{if(!t.done)all.push({text:t.t,count:t.c||1,subject:s});}));
 all.sort((a,b)=>b.count-a.count);
 var w=’’;
-all.slice(0,8).forEach(t=>w+=’<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1e2d3d"><span>’+t.text+’</span><span style="color:'+t.s.c+';font-weight:700">’+t.count+‘x</span></div>’);
-document.getElementById(‘d-weak’).innerHTML=w||’<div class="empty">Henüz konu yok</div>’;
+all.slice(0,6).forEach(t=>w+=’<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1e2d3d"><span>’+t.text+’</span><span style="color:'+t.subject.c+';font-weight:700">’+t.count+‘x</span></div>’);
+document.getElementById(‘d-weak’).innerHTML=w||’<p style="color:#5a7a8a;font-size:.85rem">Henüz konu yok</p>’;
 }
 
-function renderTopics(){
+function buildTopics(){
 var d=load();
 var html=’’;
-subjects.forEach(s=>{
-html+=’<div style="margin-bottom:20px">’
-+’<div style="font-size:.65rem;color:'+s.c+';text-transform:uppercase;font-weight:700;margin-bottom:8px">’+s.n+’</div>’
-+’<div id="topics-'+s.k+'"></div>’
-+’<div style="display:flex;gap:6px;margin-top:8px">’
-+’<input type="text" id="ti-'+s.k+'" placeholder="Konu ekle..." style="flex:1">’
-+’<button class="btn btn-p" style="flex-shrink:0;padding:8px 12px" onclick="addTopic(\''+s.k+'\')">Ekle</button>’
-+’</div>’
+SUBJECTS.forEach(s=>{
+var sorted=[…d.topics[s.k]].sort((a,b)=>(b.c||1)-(a.c||1));
+var items=’’;
+sorted.forEach((t,i)=>{
+items+=’<div class="item'+(t.done?' item-done':'')+'" onclick="toggleTopic(\''+s.k+'\','+i+')">’
++’<span class="item-count">’+( t.c||1)+‘x</span>’
++’<span class="item-name">’+t.t+’</span>’
++’<span style="color:'+s.c+'">’+(t.done?‘✓’:’’)+’</span>’
++’<button class="item-del" onclick="event.stopPropagation();deleteTopic(\''+s.k+'\','+i+')">✕</button>’
 +’</div>’;
+});
+if(!items)items=’<p style="color:#5a7a8a;font-size:.85rem;padding:10px">Henüz konu yok</p>’;
+
+```
+html+='<div class="card">'
+  +'<div class="card-title">'+s.n+'</div>'
+  +items
+  +'<div style="display:flex;gap:6px;margin-top:10px">'
+  +'<input type="text" id="ti-'+s.k+'" placeholder="Konu ekle..." style="flex:1;padding:8px;background:#070910;border:1px solid #1e2d3d;border-radius:6px;color:#cdd9e5">'
+  +'<button class="btn btn-green" onclick="addTopic(\''+s.k+'\')">Ekle</button>'
+  +'</div>'
+  +'</div>';
+```
+
 });
 document.getElementById(‘topics-cont’).innerHTML=html;
-subjects.forEach(s=>renderTopicList(s.k));
-}
-
-function renderTopicList(k){
-var d=load();
-var s=subjects.find(x=>x.k===k);
-var sorted=[…d.topics[k]].sort((a,b)=>(b.c||1)-(a.c||1));
-var html=’’;
-sorted.forEach((t,i)=>{
-html+=’<div class="item'+(t.done?' done':'')+'" onclick="toggleTopic(\''+k+'\','+i+')">’
-+’<span class="icnt" style="background:'+s.c+'18;color:'+s.c+'">’+(t.c||1)+‘x</span>’
-+’<span class="iname">’+t.t+’</span>’
-+’<span style="color:'+s.c+'">’+(t.done?‘✓’:’’)+’</span>’
-+’<button class="idel" onclick="event.stopPropagation();deleteTopic(\''+k+'\','+i+')">✕</button>’
-+’</div>’;
-});
-document.getElementById(‘topics-’+k).innerHTML=html||’<div class="empty" style="padding:10px">Henüz konu yok</div>’;
 }
 
 function addTopic(k){
@@ -389,7 +401,7 @@ if(found)found.c=(found.c||1)+1;
 else d.topics[k].push({t:txt,c:1,done:false});
 inp.value=’’;
 save(d);
-renderTopicList(k);
+buildTopics();
 toast(‘✅ Eklendi’);
 }
 
@@ -398,96 +410,108 @@ var d=load();
 var sorted=[…d.topics[k]].sort((a,b)=>(b.c||1)-(a.c||1));
 sorted[i].done=!sorted[i].done;
 save(d);
-renderTopicList(k);
+buildTopics();
 }
 
 function deleteTopic(k,i){
 var d=load();
 var sorted=[…d.topics[k]].sort((a,b)=>(b.c||1)-(a.c||1));
-d.topics[k].splice(d.topics[k].indexOf(sorted[i]),1);
+var idx=d.topics[k].indexOf(sorted[i]);
+d.topics[k].splice(idx,1);
 save(d);
-renderTopicList(k);
+buildTopics();
 toast(‘✅ Silindi’);
 }
 
 function saveGoals(){
 var d=load();
-subjects.forEach(s=>d.goals[s.k]=parseInt(document.getElementById(‘g-’+s.k).value)||0);
+SUBJECTS.forEach(s=>{
+var val=parseInt(document.getElementById(‘g-’+s.k).value)||0;
+d.goals[s.k]=val;
+});
 save(d);
 toast(‘✅ Kaydedildi’);
-renderGoals();
+updateGoals();
 }
 
-function renderGoals(){
+function updateGoals(){
 var d=load();
+SUBJECTS.forEach(s=>{
+var inp=document.getElementById(‘g-’+s.k);
+if(inp)inp.value=d.goals[s.k]||0;
+});
+
 var html=’’;
-subjects.forEach(s=>{
+SUBJECTS.forEach(s=>{
 var nets=[];
 d.entries.forEach(e=>{if(e[s.k])nets.push(e[s.k].n);});
 var ln=nets.length?nets[nets.length-1]:0;
 var g=d.goals[s.k]||0;
 var pct=g>0?Math.round(ln/g*100):0;
 html+=’<div class="card" style="border-left:3px solid '+s.c+'">’
-+’<div style="font-size:.65rem;color:'+s.c+';text-transform:uppercase;font-weight:700">’+s.n+’</div>’
-+’<div style="display:flex;justify-content:space-between;font-size:.75rem;margin:6px 0">’
++’<div class="card-title">’+s.n+’</div>’
++’<div style="display:flex;justify-content:space-between;font-size:.75rem;margin-bottom:8px">’
 +’<span>Son: <b>’+(ln?ln.toFixed(1):’—’)+’</b></span>’
 +’<span>Hedef: <b>’+g+’</b></span>’
 +’</div>’
 +’<div style="height:5px;background:#1e2d3d;border-radius:2px;overflow:hidden">’
 +’<div style="height:100%;background:'+s.c+';width:'+Math.min(100,pct)+'%;border-radius:2px;transition:width .4s"></div>’
 +’</div>’
-+’<div style="font-size:.65rem;color:#5a7a8a;margin-top:4px">’+(pct>=100?‘🎉 Hedefe ulaştın!’:’%’+pct)+’</div>’
++’<div style="font-size:.65rem;color:#5a7a8a;margin-top:6px">’+(pct>=100?‘🎉 Hedefe ulaştın!’:’%’+pct)+’</div>’
 +’</div>’;
 });
 document.getElementById(‘goals-display’).innerHTML=html;
 }
 
-function renderStudy(){
+function updateStudy(){
 var d=load();
 var html=’’;
-subjects.forEach(s=>{
+SUBJECTS.forEach(s=>{
 var tot=d.study.filter(x=>x.subject===s.k).reduce((a,b)=>a+b.minutes,0);
 var h=Math.floor(tot/60),m=tot%60;
 html+=’<div class="card" style="text-align:center;border-left:3px solid '+s.c+'">’
 +’<div style="font-size:.6rem;color:#5a7a8a;text-transform:uppercase">’+s.n+’</div>’
-+’<div style="font-size:1.6rem;font-weight:900;color:'+s.c+';margin:6px 0">’+(h>0?h+‘s ‘:’’)+(m||‘0’)+‘dk</div>’
++’<div style="font-size:1.6rem;font-weight:900;color:'+s.c+';margin:6px 0">’+(h>0?h+‘s ‘:’’)+m+‘dk</div>’
 +’</div>’;
 });
 document.getElementById(‘study-cards’).innerHTML=html;
 }
 
-function renderHistory(){
+function updateHistory(){
 var d=load();
 var e=[…d.entries].reverse();
-if(!e.length){document.getElementById(‘hist-table’).innerHTML=’<tr><td style="text-align:center;padding:20px">Henüz deneme yok</td></tr>’;return;}
+if(!e.length){document.getElementById(‘hist’).innerHTML=’<tr><td style="text-align:center;padding:20px;color:#5a7a8a">Henüz deneme yok</td></tr>’;return;}
+
 var html=’<thead><tr><th>Tarih</th>’;
-subjects.forEach(s=>html+=’<th style="color:'+s.c+'">’+s.k.toUpperCase().slice(0,3)+’</th>’);
+SUBJECTS.forEach(s=>html+=’<th style="color:'+s.c+'">’+s.k.toUpperCase().slice(0,3)+’</th>’);
 html+=’<th>Top</th><th></th></tr></thead><tbody>’;
+
 e.forEach(x=>{
-var tot=subjects.reduce((a,s)=>a+(x[s.k]?x[s.k].n:0),0);
-html+=’<tr><td>’+new Date(x.date).toLocaleDateString(‘tr-TR’,{day:‘numeric’,month:‘short’})+’</td>’;
-subjects.forEach(s=>{
+var tot=SUBJECTS.reduce((a,s)=>a+(x[s.k]?x[s.k].n:0),0);
+var dateStr=new Date(x.date).toLocaleDateString(‘tr-TR’,{day:‘numeric’,month:‘short’});
+html+=’<tr><td>’+dateStr+’</td>’;
+SUBJECTS.forEach(s=>{
 var n=x[s.k]?x[s.k].n:null;
 var col=n>=s.m*.7?’#3ddc97’:n>=s.m*.4?’#ffb340’:’#ff5c6a’;
-html+=’<td><span class="pill" style="background:'+col+'20;color:'+col+'">’+(n||’—’)+’</span></td>’;
+html+=’<td><span style="background:'+col+'18;color:'+col+';padding:2px 4px;border-radius:4px;font-weight:700">’+(n||’—’)+’</span></td>’;
 });
-html+=’<td><span class="pill" style="color:#3ddc97">’+(tot).toFixed(1)+’</span></td>’;
-html+=’<td><button class="idel" onclick="delEntry('+x.id+')">✕</button></td></tr>’;
+html+=’<td style="color:#3ddc97;font-weight:700">’+tot.toFixed(1)+’</td>’;
+html+=’<td><button class="item-del" onclick="deleteEntry('+x.id+')">✕</button></td></tr>’;
 });
 html+=’</tbody>’;
-document.getElementById(‘hist-table’).innerHTML=html;
+document.getElementById(‘hist’).innerHTML=html;
 }
 
-function delEntry(id){
+function deleteEntry(id){
 var d=load();
 d.entries=d.entries.filter(x=>x.id!==id);
 save(d);
-renderHistory();
+updateHistory();
 toast(‘✅ Silindi’);
 }
 
-buildForms();
-renderDash();
+buildEntry();
+updateDash();
 </script>
 
 </body>
