@@ -267,7 +267,16 @@ function switchPage(pageName){
   tabs.forEach(function(b){b.classList.remove('on');});
   pages.forEach(function(p){p.classList.remove('on');});
   
-  event.target.classList.add('on');
+  // Tıklanan butonu bul ve aktif yap
+  var buttons=document.querySelectorAll('.tab');
+  for(var i=0;i<buttons.length;i++){
+    var attr=buttons[i].getAttribute('onclick');
+    if(attr && attr.includes(pageName)){
+      buttons[i].classList.add('on');
+      break;
+    }
+  }
+  
   document.getElementById('p-'+pageName).classList.add('on');
   
   if(pageName==='dash')rDash();
