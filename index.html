@@ -200,7 +200,12 @@ tr:last-child td{border-bottom:none}
   <div id="sforms"></div>
   <div class="fcard">
     <div class="flbl">⏱️ Çalışma Süreleri (dakika)</div>
-    <div class="g2" id="st-inputs"></div>
+    <div class="g2">
+      <div class="fg"><label style="color:#3ddc97">Matematik</label><input type="number" id="st-mat" min="0" placeholder="0 dk"></div>
+      <div class="fg"><label style="color:#ff5c6a">Türkçe</label><input type="number" id="st-tur" min="0" placeholder="0 dk"></div>
+      <div class="fg"><label style="color:#ffb340">Sosyal</label><input type="number" id="st-sos" min="0" placeholder="0 dk"></div>
+      <div class="fg"><label style="color:#58b4ff">Fen</label><input type="number" id="st-fen" min="0" placeholder="0 dk"></div>
+    </div>
   </div>
   <div class="brow">
     <button class="btn btn-p" onclick="saveEntry()">💾 Kaydet</button>
@@ -219,7 +224,12 @@ tr:last-child td{border-bottom:none}
 <div class="page" id="p-hedef">
   <div class="fcard">
     <div class="flbl">Hedef Net Belirle</div>
-    <div class="g2" id="ginputs"></div>
+    <div class="g2">
+      <div class="fg"><label style="color:#3ddc97">Matematik</label><input type="number" id="gi-mat" min="0" max="40" value="25" placeholder="0"></div>
+      <div class="fg"><label style="color:#ff5c6a">Türkçe</label><input type="number" id="gi-tur" min="0" max="40" value="28" placeholder="0"></div>
+      <div class="fg"><label style="color:#ffb340">Sosyal</label><input type="number" id="gi-sos" min="0" max="20" value="12" placeholder="0"></div>
+      <div class="fg"><label style="color:#58b4ff">Fen</label><input type="number" id="gi-fen" min="0" max="20" value="12" placeholder="0"></div>
+    </div>
     <div class="brow"><button class="btn btn-p" onclick="saveGoals()">Kaydet</button></div>
   </div>
   <div id="gdisplay"></div>
@@ -294,14 +304,6 @@ function buildForms(){
       +'</div>';
   });
   document.getElementById('sforms').innerHTML=sf;
-
-  var si='';
-  S.forEach(function(s){si+='<div class="fg"><label style="color:'+s.c+'">'+s.label+'</label><input type="number" id="st-'+s.key+'" min="0" placeholder="0 dk"></div>';});
-  document.getElementById('st-inputs').innerHTML=si;
-
-  var d=ld();var gi='';
-  S.forEach(function(s){gi+='<div class="fg"><label style="color:'+s.c+'">'+s.label+'</label><input type="number" id="gi-'+s.key+'" min="0" max="'+s.max+'" value="'+(d.goals[s.key]||0)+'"></div>';});
-  document.getElementById('ginputs').innerHTML=gi;
 }
 
 function cNet(k){
@@ -443,7 +445,12 @@ sv(d);rTopics(k);
 }
 
 function rHedef(){
-var d=ld();var h='';
+var d=ld();
+S.forEach(function(s){
+  var inp=document.getElementById('gi-'+s.key);
+  if(inp)inp.value=d.goals[s.key]||0;
+});
+var h='';
 S.forEach(function(s){
 var nets=[];d.entries.forEach(function(e){if(e[s.key])nets.push(e[s.key].net);});
 var ln=nets.length?nets[nets.length-1]:0;
